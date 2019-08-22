@@ -1,0 +1,21 @@
+{
+    "name": "xxggabriel/verify-cpf",
+    "description": "Faz a validação do digito verificador do CPF.",
+    "license": "MIT",
+    "keywords": ["CPF", "Validar CPF", "Digito Verificado"],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Gabriel Oliveira",
+            "email": "gabrieloliveradesouza9@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {    
+    },
+    "autoload": {
+        "psr-4" : {
+            "CPF\\" : "src\\"
+        }
+    }
+}
