@@ -7,12 +7,21 @@ class Validate{
     private $cpf;
     private $verifyingDigit;
 
+    /**
+     * Start CPF Validation.
+     * @var $cpf = CPF for validation
+     * @return bool
+     */
     public function validate(string $cpf)
     {
         $this->setCpf($cpf);
         return $this->validateVerifiedNumber();
     }
 
+    /** 
+     * CPF Validation Rule Manager.
+     * @return bool 
+    */
     public function validateVerifiedNumber()
     {
         $cpf = (int)substr($this->getCpf(), 0, 9);
@@ -20,10 +29,16 @@ class Validate{
         
         $checkerNumber1 = $this->checkDigit($cpf, 10);
         $checkerNumber2 =$this->checkDigit($cpf, 11,  $checkerNumber1);
-        return ($checkerNumber1.$checkerNumber2 == substr($this->getCpf(), 9, 2));
+        return $checkerNumber1.$checkerNumber2 == substr($this->getCpf(), 9, 2);
     }
 
-    private function checkDigit($cpf, $sum, $firstTester = '')
+    /**
+     * Make the calculation of the verifying digests.
+     * @var $cpf = receives the first 9 digits of CPF.
+     * @var $som = multiplication value to generate the check digit.
+     * @var $firstTester = receive first check digit.
+     */
+    private function checkDigit(int $cpf,int $sum, $firstTester = '')
     {
         $calc = 0;
         $cpf .= $firstTester;
